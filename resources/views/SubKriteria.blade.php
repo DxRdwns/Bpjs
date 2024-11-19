@@ -73,7 +73,7 @@
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $data->nama_subkriteria }}</td>
-                                            <td>{{ $data->id_kategori }}</td>
+                                            <td>{{ $data->kriteria->nama_kriteria }}</td>
                                             <td>{{ $data->nilai_subkriteria }}</td>
                                         </tr>
                                     @endforeach

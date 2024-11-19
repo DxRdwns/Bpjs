@@ -17,5 +17,9 @@ class SubKriteriaModel extends Model
     {
         return $this->hasMany(PekerjaanModel::class, 'id_kategori', 'id');
     }
+    public function kriteria()
+    {
+        return $this->belongsTo(KriteriaModel::class, 'id_kategori', 'id');
+    }
 
 }

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <title>Admin - BPJS</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -48,7 +48,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">Kelas Perawatan</span>
+                <span class="d-none d-lg-block">BPJS</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -75,50 +75,14 @@
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
                         <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                        <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
-                            <span>Web Designer</span>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-person"></i>
-                                <span>My Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-gear"></i>
-                                <span>Account Settings</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Need Help?</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -135,17 +99,16 @@
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
-
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/') ? '' : 'collapsed' }}" href="{{ url('/') }}">
+                <a class="nav-link {{ Request::is('/Member') ? '' : 'collapsed' }}" href="{{ url('/Member') }}">
                     <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
+                    <span>Member</span>
                 </a>
             </li><!-- End Dashboard Nav -->
-
+            <li class="nav-heading">Setting</li>
             <li class="nav-item">
                 <a class="nav-link  {{ Request::is('Kriteria') ? '' : 'collapsed' }}" href="{{ url('/Kriteria') }}">
-                    <i class="bi bi-person"></i>
+                    <i class="bi bi-card-heading"></i>
                     <span>Kriteria</span>
                 </a>
             </li><!-- End Profile Page Nav -->
@@ -153,29 +116,23 @@
             <li class="nav-item">
                 <a class="nav-link  {{ Request::is('SubKriteria') ? '' : 'collapsed' }}"
                     href="{{ url('/SubKriteria') }}">
-                    <i class="bi bi-question-circle"></i>
+                    <i class="bi  bi-card-text"></i>
                     <span>Sub Kriteria</span>
                 </a>
             </li><!-- End F.A.Q Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link  {{ Request::is('Kelas') ? '' : 'collapsed' }}" href="{{ url('/Kelas') }}">
-                    <i class="bi bi-envelope"></i>
-                    <span>Kelas</span>
-                </a>
-            </li><!-- End Contact Page Nav -->
+
 
             <li class="nav-item">
                 <a class="nav-link  {{ Request::is('Peserta') ? '' : 'collapsed' }}" href="{{ url('/Peserta') }}">
-                    <i class="bi bi-card-list"></i>
+                    <i class="bi bi-person-lines-fill"></i>
                     <span>Peserta</span>
                 </a>
             </li><!-- End Register Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link  {{ Request::is('Pekerjaan') ? '' : 'collapsed' }}"
-                    href="{{ url('/Pekerjaan') }}">
-                    <i class="bi bi-box-arrow-in-right"></i>
+                <a class="nav-link  {{ Request::is('Pekerjaan') ? '' : 'collapsed' }}" href="{{ url('/Pekerjaan') }}">
+                    <i class="bi bi-person-workspace"></i>
                     <span>Pekerjaan</span>
                 </a>
             </li><!-- End Login Page Nav -->
@@ -184,17 +141,11 @@
                 <a class="nav-link  {{ Request::is('Normalisasi') ? '' : 'collapsed' }}"
                     href="{{ url('/Normalisasi') }}">
                     <i class="bi bi-dash-circle"></i>
-                    <span>Normalisasi</span>
+                    <span>Result</span>
                 </a>
             </li><!-- End Error 404 Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link  {{ Request::is('Penentuan') ? '' : 'collapsed' }}"
-                    href="{{ url('/Penentuan') }}">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Penentuan</span>
-                </a>
-            </li><!-- End Blank Page Nav -->
+
 
         </ul>
     </aside><!-- End Sidebar -->

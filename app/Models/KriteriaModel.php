@@ -12,4 +12,9 @@ class KriteriaModel extends Model
     protected $fillable = ['id','nama_kriteria','kode_kriteria','nilai_kriteria'];
     public $timestamps = false;
 
+
+    public function subkriteria()
+    {
+        return $this->hasMany(SubKriteriaModel::class, 'id_kategori', 'id');
+    }
 }

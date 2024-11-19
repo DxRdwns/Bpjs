@@ -8,7 +8,12 @@ use App\Models\Pos;
 class DashboardController extends Controller {
     public function index(): View {
     
-        return view('welcome');
+        return view('user.beranda');
+
+    }
+      public function petunjuk(): View {
+    
+        return view('user.petunjuk');
 
     }
 }
