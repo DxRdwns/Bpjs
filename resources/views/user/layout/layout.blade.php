@@ -9,8 +9,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('assets/img/bpjs.png') }}" rel="icon">
+    <link href="{{ asset('assets/img/bpjs.png') }}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -29,6 +29,32 @@
 
     <!-- Main CSS File -->
     <link href="{{ asset('user/assets/css/main.css') }}" rel="stylesheet">
+    <style>
+        .custom-radio {
+            width: 1rem;
+            /* Ukuran radio button */
+            height: 1rem;
+            /* Ukuran radio button */
+            border: 1px solid #000;
+            /* Ketebalan dan warna border */
+            border-radius: 50%;
+            /* Membuat bentuk lingkaran */
+        }
+
+        .custom-radio:checked {
+            background-color: #0d6efd;
+            /* Warna lingkaran saat dipilih */
+            border-color: #0d6efd;
+            /* Warna border saat dipilih */
+        }
+
+        .form-check-label {
+            margin-left: 0.5rem;
+            /* Memberi jarak antara radio button dan label */
+            font-size: 1rem;
+            /* Ukuran font label (opsional) */
+        }
+    </style>
 
     <!-- =======================================================
   * Template Name: Medilab
@@ -50,8 +76,8 @@
             <div class="container position-relative d-flex align-items-center justify-content-between">
                 <a href="index.html" class="logo d-flex align-items-center me-auto">
                     <!-- Uncomment the line below if you also wish to use an image logo -->
-                    <!-- <img src="assets/img/logo.png" alt=""> -->
-                    <h1 class="sitename">BPJS</h1>
+                    <img src="assets/img/bpjs.png" alt="">
+                    <h1 class="sitename">BPJS Kesehatan</h1>
                 </a>
 
                 <nav id="navmenu" class="navmenu">

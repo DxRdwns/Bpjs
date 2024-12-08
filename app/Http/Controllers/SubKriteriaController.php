@@ -29,4 +29,33 @@ class SubKriteriaController extends Controller {
         return back()->with('success', 'Data Siswa Berhasil Ditambahkan!');
 
     }
+    public function update(String $id, Request $request): RedirectResponse
+    {
+        $request->validate([
+            'nama_subkriteria' => 'required',
+            'nilai_subkriteria' => 'required',
+            'id_kategori' => 'required'
+
+        ]);
+        $data = KriteriaModel::find($id);
+        $data->update([
+            'nama_subkriteria' => $request->nama_subkriteria,
+            'nilai_subkriteria' => $request->nilai_subkriteria,
+            'id_kategori' => $request->id_kategori,
+        ]);
+        return back()->with('success', 'Subkategori berhasil diupdate!');
+
+    }
+        public function destroy(string $id): RedirectResponse
+{
+    // Mencari data kategori berdasarkan ID
+    $subkriteria = SubKriteriaModel::find($id);
+
+    
+    // Menghapus subkriteria
+    $subkriteria->delete();
+
+    // Mengembalikan respon dengan pesan sukses
+    return back()->with('error', 'Subkategori terkait berhasil dihapus.');
+}
 }

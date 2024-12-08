@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="assets/img/bpjs.png" rel="icon">
+    <link href="assets/img/bpjs.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -20,6 +20,9 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
+    <link href="{{ asset('assets/vendor/notifications/css/lobibox.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/notifications/css/lobibox.css') }}" rel="stylesheet" />
+
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/boxicons/css /boxicons.min.css') }}" rel="stylesheet">
@@ -47,27 +50,18 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">BPJS</span>
+                <img src="assets/img/bpjs.png" alt="">
+                <span class="d-none d-lg-block">BPJS Kesehatan</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
-        <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
-        </div><!-- End Search Bar -->
+
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
-                <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link nav-icon search-bar-toggle " href="#">
-                        <i class="bi bi-search"></i>
-                    </a>
-                </li><!-- End Search Icon-->
+
 
 
                 <li class="nav-item dropdown pe-3">
@@ -100,9 +94,15 @@
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('/Member') ? '' : 'collapsed' }}" href="{{ url('/Member') }}">
+                <a class="nav-link {{ Request::is('Dashboard') ? '' : 'collapsed' }}" href="{{ url('/Dashboard') }}">
                     <i class="bi bi-grid"></i>
-                    <span>Member</span>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('Member') ? '' : 'collapsed' }}" href="{{ url('/Member') }}">
+                    <i class="bi bi-people"></i>
+                    <span>Responden</span>
                 </a>
             </li><!-- End Dashboard Nav -->
             <li class="nav-heading">Setting</li>
@@ -124,26 +124,20 @@
 
 
             <li class="nav-item">
-                <a class="nav-link  {{ Request::is('Peserta') ? '' : 'collapsed' }}" href="{{ url('/Peserta') }}">
+                <a class="nav-link  {{ Request::is('About') ? '' : 'collapsed' }}" href="{{ url('/About') }}">
                     <i class="bi bi-person-lines-fill"></i>
-                    <span>Peserta</span>
+                    <span>About</span>
+                </a>
+            </li><!-- End Register Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link  {{ Request::is('Guideline') ? '' : 'collapsed' }}" href="{{ url('/Guideline') }}">
+                    <i class="bi bi-bar-chart-steps"></i>
+                    <span>Guideline</span>
                 </a>
             </li><!-- End Register Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link  {{ Request::is('Pekerjaan') ? '' : 'collapsed' }}" href="{{ url('/Pekerjaan') }}">
-                    <i class="bi bi-person-workspace"></i>
-                    <span>Pekerjaan</span>
-                </a>
-            </li><!-- End Login Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link  {{ Request::is('Normalisasi') ? '' : 'collapsed' }}"
-                    href="{{ url('/Normalisasi') }}">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>Result</span>
-                </a>
-            </li><!-- End Error 404 Page Nav -->
+
 
 
 
@@ -173,6 +167,36 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+
+    {{-- notif --}}
+    <script src="{{ asset('assets/vendor/notifications/js/lobibox.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/notifications/js/notifications.min.js') }}"></script>
+
+    @session('success')
+        <script>
+            Lobibox.notify('success', {
+                pauseDelayOnHover: true,
+                continueDelayOnInactiveTab: false,
+                size: 'mini',
+                position: 'top right',
+                icon: 'bx bx-info-circle',
+                msg: '{{ session('success') }}'
+            });
+        </script>
+    @endsession
+    @session('error')
+        <script>
+            Lobibox.notify('error', {
+                pauseDelayOnHover: true,
+                continueDelayOnInactiveTab: false,
+                size: 'mini',
+                position: 'top right',
+                icon: 'bx bx-info-circle',
+                msg: '{{ session('error') }}'
+            });
+        </script>
+    @endsession
 
 </body>
 

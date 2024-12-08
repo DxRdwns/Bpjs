@@ -43,8 +43,10 @@
                 </div>
 
                 <div class="container section-title mt-5" data-aos="fade-up">
+                    <p>Jawab semua pertanyaan berikut untuk menentukan kelas BPJS anda
+                    </p>
                     <h2></h2>
-                    <p>Jawab Smua Pertanyaan Dibawah</p>
+
                 </div><!-- End Section Title -->
                 @foreach ($question as $index => $item)
                     <div class="col-lg-12 col-12">
@@ -56,7 +58,7 @@
                         @if ($item->id == $kri->id_kategori)
                             <div class="col-lg-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio"
+                                    <input class="form-check-input custom-radio" type="radio"
                                         name="{{ $item->kode_kriteria == 'C1' ? 'C1' : ($item->kode_kriteria == 'C2' ? 'C2' : ($item->kode_kriteria == 'C3' ? 'C3' : ($item->kode_kriteria == 'C4' ? 'C4' : ($item->kode_kriteria == 'C5' ? 'C5' : '')))) }}"
                                         id="flexRadioDefault{{ $item->id }}_{{ $kri->id }}"
                                         value="{{ $kri->nilai_subkriteria }}">

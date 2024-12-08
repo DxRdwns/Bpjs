@@ -80,8 +80,13 @@
                                     <div class="col-lg-8 details order-2 order-lg-1">
                                         <h3>Petunjuk</h3>
 
-                                        <p>Bagian dari halaman yang berisi petunjuk penggunaan website ini, serta informasi
-                                            yang ada pada setiap halaman.</p>
+                                        <ul>
+                                            <li>Klik <a href="/Survei">disini</a> untuk memulai menentukan kelas BPJS anda
+                                            </li>
+                                            <li>Isi Biodata Anda</li>
+                                            <li>Jawab semua pertanyaan yang ada</li>
+                                            <li>Klik submit untuk melihat hasil dari jawaban anda serta kelas BPJS</li>
+                                        </ul>
                                     </div>
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
                                         <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
