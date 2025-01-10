@@ -146,12 +146,13 @@ if ($nilaiDesimal <= 46) {
             'hasil' => $nilaiDesimal,
             'quality' => $keterangan,
         ]);
-
-        
-
         PesertaModel::create($pes);
-
+        $datasession = session()->all();
+        
     
     return view('user.hasil', $data, compact('keterangan','nilaiDesimal'));
+    
+    
+
 }
 }

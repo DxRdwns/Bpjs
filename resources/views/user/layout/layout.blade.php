@@ -20,6 +20,8 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
+
+
     <link href="{{ asset('user/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('user/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('user/assets/vendor/aos/aos.css') }}" rel="stylesheet">
@@ -135,6 +137,7 @@
 
     <!-- Main JS File -->
     <script src="{{ asset('user/assets/js/main.js') }}"></script>
+
 
 </body>
 

@@ -26,19 +26,19 @@
                 <div class="row">
                     <div class="col-md-6 mb-3 form-group">
                         <input type="text" name="name" class="form-control" id="name" placeholder="Nama"
-                            required="">
+                            required>
                     </div>
                     <div class="col-md-6 mb-3 form-group mt-3 mt-md-0">
                         <input type="email" class="form-control" name="email" id="email" placeholder="Email"
-                            required="">
+                            required>
                     </div>
                     <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="No Handphone"
-                            required="">
+                        <input type="number" class="form-control" name="phone" id="phone" placeholder="No Handphone"
+                            required>
                     </div>
                     <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <input type="tel" class="form-control" name="addres" id="phone" placeholder="Alamat"
-                            required="">
+                        <input type="text" class="form-control" name="addres" id="phone" placeholder="Alamat"
+                            required>
                     </div>
                 </div>
 
@@ -58,18 +58,21 @@
                         @if ($item->id == $kri->id_kategori)
                             <div class="col-lg-12">
                                 <div class="form-check">
+                                    <!-- Input Radio -->
                                     <input class="form-check-input custom-radio" type="radio"
-                                        name="{{ $item->kode_kriteria == 'C1' ? 'C1' : ($item->kode_kriteria == 'C2' ? 'C2' : ($item->kode_kriteria == 'C3' ? 'C3' : ($item->kode_kriteria == 'C4' ? 'C4' : ($item->kode_kriteria == 'C5' ? 'C5' : '')))) }}"
-                                        id="flexRadioDefault{{ $item->id }}_{{ $kri->id }}"
-                                        value="{{ $kri->nilai_subkriteria }}">
-                                    {{-- hidden --}}
-                                    <input type="hidden"
-                                        name="{{ $item->kode_kriteria == 'C1' ? 'C1text' : ($item->kode_kriteria == 'C2' ? 'C2text' : ($item->kode_kriteria == 'C3' ? 'C3text' : ($item->kode_kriteria == 'C4' ? 'C4text' : ($item->kode_kriteria == 'C5' ? 'C5text' : '')))) }}"
-                                        value="{{ $kri->nama_subkriteria }}">
+                                        name="{{ $item->kode_kriteria }}"
+                                        id="radio_{{ $item->kode_kriteria }}_{{ $kri->id }}"
+                                        value="{{ $kri->nilai_subkriteria }}"
+                                        data-related-hidden="hidden_{{ $item->kode_kriteria }}_{{ $kri->id }}"
+                                        required>
 
-                                    {{-- endhidden --}}
-                                    <label class="form-label"
-                                        for="flexRadioDefault{{ $item->id }}_{{ $kri->id }}">
+                                    <!-- Input Hidden -->
+                                    <input type="hidden" id="hidden_{{ $item->kode_kriteria }}_{{ $kri->id }}"
+                                        name="{{ $item->kode_kriteria }}text" value="{{ $kri->nama_subkriteria }}"
+                                        disabled>
+
+                                    <!-- Label -->
+                                    <label class="form-label" for="radio_{{ $item->kode_kriteria }}_{{ $kri->id }}">
                                         {{ $kri->nama_subkriteria }}
                                     </label>
                                 </div>
@@ -87,4 +90,26 @@
         </div>
 
     </section><!-- /Appointment Section -->
+
+
+
+    <script>
+        document.querySelectorAll('.form-check-input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const name = radio.name; // Mendapatkan nama kriteria (C1, C2, dst.)
+                const allHiddenInputs = document.querySelectorAll(`input[name="${name}text"]`);
+
+                // Nonaktifkan semua input hidden terkait kriteria
+                allHiddenInputs.forEach(input => input.disabled = true);
+
+                // Aktifkan hanya input hidden terkait radio yang dipilih
+                const relatedHiddenId = radio.dataset.relatedHidden;
+                const relatedHidden = document.getElementById(relatedHiddenId);
+                if (relatedHidden) {
+                    relatedHidden.disabled = false;
+                }
+            });
+        });
+    </script>
+
 @endsection
